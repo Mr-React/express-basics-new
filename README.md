@@ -13,6 +13,10 @@
 - run npm run start to start server
 - run npm run start:dev to start server with nodemon
 
+## Notes
+
+    1. Using Postman to test api
+
 ## Middlewares
 
 - express.json() and express.urlencoded() middleware is used to parse request body
@@ -190,20 +194,20 @@
 
   In groceries.js file update and add following line
 
-     ```
-     route.get("/groceries", (req, res) => {
-       console.log("Cookie: ", req.cookies);
+  ```
+  route.get("/groceries", (req, res) => {
+    console.log("Cookie: ", req.cookies);
 
-       res.status(200).send(groceryList);
-     });
+    res.status(200).send(groceryList);
+  });
 
-     route.get("/cookie-example", (req, res) => {
-       console.log(`baseURL: ${req.baseUrl}`);
+  route.get("/cookie-example", (req, res) => {
+    console.log(`baseURL: ${req.baseUrl}`);
 
-       res.cookie("visited", true, {
-         maxAge: 10000,
-       });
+    res.cookie("visited", true, {
+      maxAge: 10000,
+    });
 
-       res.status(200).send(groceryList);
-     });
-     ```
+    res.status(200).send(groceryList);
+  });
+  ```
