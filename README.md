@@ -13,7 +13,34 @@
 - run npm run start to start server
 - run npm run start:dev to start server with nodemon
 
-## Methods and Middlewares
+## Middlewares
+
+- express.json() and express.urlencoded() middleware is used to parse request body
+
+  ```
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+  ```
+
+- example
+
+  ```
+  app.get(
+    "/grocery",
+    (req, res, next) => {
+      console.log("Before hnadling request body");
+      next();
+    },
+    (req, res) => {
+      console.log("After handling request body");
+      console.log("Groceries GET api");
+
+      res.status(200).send(groceryList);
+    }
+  );
+  ```
+
+## Methods
 
 - GET method to get data from server (call api using postman with url => http://localhost:3000/groceries)
 

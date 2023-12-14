@@ -23,6 +23,20 @@ const groceryList = [
   },
 ];
 
+app.get(
+  "/grocery",
+  (req, res, next) => {
+    console.log("Before hnadling request body");
+    next();
+  },
+  (req, res) => {
+    console.log("After handling request body");
+    console.log("Groceries GET api");
+
+    res.status(200).send(groceryList);
+  }
+);
+
 app.get("/groceries", (req, res) => {
   console.log("Groceries GET api");
 
