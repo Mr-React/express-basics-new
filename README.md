@@ -188,7 +188,7 @@
   app.use(cookieParser());
   ```
 
-  2. In groceries.js file update and add following line
+  In groceries.js file update and add following line
 
      ```
      route.get("/groceries", (req, res) => {
