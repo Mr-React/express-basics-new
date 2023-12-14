@@ -211,3 +211,48 @@
     res.status(200).send(groceryList);
   });
   ```
+
+- Session
+
+  1. Install express-session using npm i express-session
+  2. Add following line in index.js
+
+  ```
+  const session = require("express-session");
+  app.use(
+    session({
+      secret: "wordecrYPT",
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
+  ```
+
+  3. In groceries.js file add following code
+
+  ```
+  route.get("/shopping/cart", (req, res) => {
+    const { cart } = req.session;
+    if (!cart) {
+      res.send("You have no cart session");
+    } else {
+      res.send(cart);
+    }
+  });
+
+  route.post("/shopping/cart/item", (req, res) => {
+    const { item, quantity } = req.body;
+    const cartItem = { item, quantity };
+    console.log(cartItem);
+
+    const { cart } = req.session;
+    if (cart) {
+      req.session.cart.items.push(cartItem);
+    } else {
+      req.session.cart = {
+        items: [cartItem],
+      };
+    }
+    res.send(201);
+  });
+  ```
