@@ -1,5 +1,6 @@
 const express = require("express");
 const groceryRoute = require("./routes/groceries");
+const marketRoute = require("./routes/market");
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/v1/", groceryRoute);
+app.use("/api/v1/supermarket", marketRoute);
 
 app.listen(PORT, () => {
   console.log("http://localhost:3000/ => running on port " + PORT);

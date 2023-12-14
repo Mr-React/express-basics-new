@@ -87,9 +87,46 @@
 
   1. move all app.get() and app.post from index. js to newly created /routes/groceries.js file
   2. In index.js file add following line
-     - a. const groceryRoute = require("./routes/groceries");
-     - b. app.use("/api/v1/", groceryRoute);
+     ```
+     a. const groceryRoute = require("./routes/groceries");
+     b. app.use("/api/v1/", groceryRoute);
+     ```
   3. In groceries.js file add following line
-     - a. const { Router } = require("express");
-     - b. const route = Router();
-     - c. module.exports = route;
+     ```
+     a. const { Router } = require("express");
+     b. const route = Router();
+     c. module.exports = route;
+     ```
+
+- New market route added (call api using postman with url => http://localhost:3000/api/v1/supermarket)
+
+  1. Add following line in index.js
+     ```
+     const marketRoute = require("./routes/market");
+     app.use("/api/v1/supermarket", marketRoute);
+     ```
+  2. Create new market.js file in /routes/ folder and following code
+
+  ```
+  const { Router } = require("express");
+
+  const router = Router();
+
+  const superMarket = [
+    {
+      store: "Dmart",
+    },
+    {
+      store: "RelianceMart",
+    },
+    {
+      store: "FlipkartMart",
+    },
+  ];
+
+  router.get("/", (req, res) => {
+    res.status(200).send(superMarket);
+  });
+
+  module.exports = router;
+  ```
