@@ -46,7 +46,7 @@
 
 ## Methods
 
-- GET method to get data from server (call api using postman with url => http://localhost:3000/groceries)
+- GET method to get data from server (call api using postman with url => http://localhost:3000/api/v1/groceries)
 
   ```
   app.get("/groceries", (req, res) => {
@@ -61,7 +61,7 @@
   });
   ```
 
-- POST method to post data to server (call api using postman with url => http://localhost:3000/groceries)
+- POST method to post data to server (call api using postman with url => http://localhost:3000/api/v1/groceries)
 
   ```
   const groceryList = [];
@@ -72,7 +72,7 @@
   });
   ```
 
-- Route Params (call api using postman with url => http://localhost:3000/grocery_param/apple)
+- Route Params (call api using postman with url => http://localhost:3000/api/v1/apple)
 
   ```
   app.get("/grocery_param/:item", (req, res) => {
