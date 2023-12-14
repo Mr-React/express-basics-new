@@ -30,6 +30,12 @@ const superMarket = [
   },
 ];
 
+router.use((req, res, next) => {
+  console.log(req.session.user);
+  if (req.session.user) next();
+  else res.status(401).send("You are not logged in..!");
+});
+
 router.get("/", (req, res) => {
   res.status(200).send(superMarket);
 });

@@ -258,3 +258,44 @@
     res.send(201);
   });
   ```
+
+- Session and Auth
+  To create session first call post api with url http://localhost:3000/api/v1/auth/login
+  with body {username:<username>, password:<password>} and then your are logged in and able to call
+  other API's
+
+  1. In index.js file move app.use("/api/v1/auth", authRoute); before other routes(market and groceries)
+  2. Create new file auth.js and following code
+
+     ```
+     const { Router } = require("express");
+
+     const router = Router();
+
+     router.post("/login", (req, res) => {
+       const { username, password } = req.body;
+       if (username && password) {
+         if (req.session.user) {
+           res.send(req.session.user);
+         } else {
+           req.session.user = {
+             username,
+           };
+         }
+         res.send(req.session);
+       } else {
+         res.send(401);
+       }
+     });
+
+     module.exports = router;
+     ```
+
+  3. In groceries.js and market.js add following code before any API define
+     ```
+     router.use((req, res, next) => {
+       console.log(req.session.user);
+       if (req.session.user) next();
+       else res.status(401).send("You are not logged in..!");
+     });
+     ```

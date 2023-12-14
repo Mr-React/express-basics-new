@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const groceryRoute = require("./routes/groceries");
 const marketRoute = require("./routes/market");
+const authRoute = require("./routes/auth");
 
 const app = express();
 const PORT = 3000;
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/", groceryRoute);
 app.use("/api/v1/supermarket", marketRoute);
 
