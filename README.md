@@ -185,7 +185,7 @@
 - Cookies
 
   Install cookie-parser using npm i cookie-parser and add following line in index.js
-  To call cookie api first call http://localhost:3000/api/v1/cookie-example and then http://localhost:3000/api/v1/groceries
+  To call cookie api first get call http://localhost:3000/api/v1/cookie-example and get then http://localhost:3000/api/v1/groceries
 
   ```
   const cookieParser = require("cookie-parser");
@@ -213,6 +213,8 @@
   ```
 
 - Session
+
+  To check session api first call Get http://localhost:3000/api/v1/shopping/cart and then post http://localhost:3000/api/v1/shopping/cart/item
 
   1. Install express-session using npm i express-session
   2. Add following line in index.js
