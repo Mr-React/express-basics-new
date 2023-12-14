@@ -18,6 +18,7 @@
 - express.json() and express.urlencoded() middleware is used to parse request body
 
   ```
+  // for parsing application/x-www-form-urlencoded
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use((req, res, next) => {
@@ -174,5 +175,35 @@
       } else {
         res.status(200).send(superMarket);
       }
+     });
+     ```
+
+- Cookies
+
+  Install cookie-parser using npm i cookie-parser and add following line in index.js
+  To call cookie api first call http://localhost:3000/api/v1/cookie-example and then http://localhost:3000/api/v1/groceries
+
+  ```
+  const cookieParser = require("cookie-parser");
+  app.use(cookieParser());
+  ```
+
+  2. In groceries.js file update and add following line
+
+     ```
+     route.get("/groceries", (req, res) => {
+       console.log("Cookie: ", req.cookies);
+
+       res.status(200).send(groceryList);
+     });
+
+     route.get("/cookie-example", (req, res) => {
+       console.log(`baseURL: ${req.baseUrl}`);
+
+       res.cookie("visited", true, {
+         maxAge: 10000,
+       });
+
+       res.status(200).send(groceryList);
      });
      ```

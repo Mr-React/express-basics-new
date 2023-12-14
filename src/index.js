@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const groceryRoute = require("./routes/groceries");
 const marketRoute = require("./routes/market");
 
@@ -8,8 +9,10 @@ const PORT = 3000;
 // midllerwares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 app.use((req, res, next) => {
-  console.log(`${req.method}:${req.url}`);
+  console.log(`${req.method}:${req.url} \nOriginal URL: ${req.originalUrl}`);
   next();
 });
 

@@ -33,7 +33,17 @@ route.get(
 );
 
 route.get("/groceries", (req, res) => {
-  console.log("Groceries GET api");
+  console.log("Cookie: ", req.cookies);
+
+  res.status(200).send(groceryList);
+});
+
+route.get("/cookie-example", (req, res) => {
+  console.log(`baseURL: ${req.baseUrl}`);
+
+  res.cookie("visited", true, {
+    maxAge: 10000,
+  });
 
   res.status(200).send(groceryList);
 });
