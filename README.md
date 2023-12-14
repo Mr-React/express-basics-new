@@ -15,7 +15,7 @@
 
 ## Methods and Middlewares
 
-- get method to get data from server (call api using postman with url => http://localhost:3000/groceries)
+- GET method to get data from server (call api using postman with url => http://localhost:3000/groceries)
 
   ```
   app.get("/groceries", (req, res) => {
@@ -27,5 +27,16 @@
             quantity: 1,
         }
     ]);
+  });
+  ```
+
+- POST method to post data to server (call api using postman with url => http://localhost:3000/groceries)
+
+  ```
+  const groceryList = [];
+  app.post("/groceries", (req, res) => {
+      console.log(req.body);
+      groceryList.push(req.body);
+      res.status(201).send("Created!");
   });
   ```
