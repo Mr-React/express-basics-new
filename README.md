@@ -88,14 +88,14 @@
   1. move all app.get() and app.post from index. js to newly created /routes/groceries.js file
   2. In index.js file add following line
      ```
-     a. const groceryRoute = require("./routes/groceries");
-     b. app.use("/api/v1/", groceryRoute);
+     const groceryRoute = require("./routes/groceries");
+     app.use("/api/v1/", groceryRoute);
      ```
   3. In groceries.js file add following line
      ```
-     a. const { Router } = require("express");
-     b. const route = Router();
-     c. module.exports = route;
+     const { Router } = require("express");
+     const route = Router();
+     module.exports = route;
      ```
 
 - New market route added (call api using postman with url => http://localhost:3000/api/v1/supermarket)
