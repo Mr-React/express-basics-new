@@ -15,7 +15,7 @@
 
 ## Notes
 
-    1. Using Postman to test api
+1. Using Postman to test api
 
 ## Middlewares
 
