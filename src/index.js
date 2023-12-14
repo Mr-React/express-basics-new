@@ -47,6 +47,13 @@ app.get("/groceries", (req, res) => {
   res.status(200).send(groceryList);
 });
 
+app.get("/grocery_param/:item", (req, res) => {
+  const { item } = req.params;
+  const groceryItem = groceryList.find((it) => it.item === item);
+
+  res.status(200).send(groceryItem);
+});
+
 app.post("/groceries", (req, res) => {
   console.log(req.body);
   groceryList.push(req.body);

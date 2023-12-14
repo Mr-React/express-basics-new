@@ -71,3 +71,14 @@
       res.status(201).send("Created!");
   });
   ```
+
+- Route Params (call api using postman with url => http://localhost:3000/grocery_param/apple)
+
+  ```
+  app.get("/grocery_param/:item", (req, res) => {
+    const { item } = req.params;
+    const groceryItem = groceryList.find((it) => it.item === item);
+
+    res.status(200).send(groceryItem);
+  });
+  ```
