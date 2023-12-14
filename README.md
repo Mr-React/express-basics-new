@@ -13,7 +13,7 @@
 - run npm run start to start server
 - run npm run start:dev to start server with nodemon
 
-## Notes
+## ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) Important Notes
 
 1. Using Postman to test api
 
